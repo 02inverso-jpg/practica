@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Directorio · PULSO</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">PULSO<span>.</span></a>
+    <nav class="site-nav">
+      <a href="directorio.html">Directorio</a>
+      <a href="login.html" class="btn btn-primary">Acceder</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container directory-layout">
+  <aside class="filters">
+    <h3>Filtros</h3>
+    <form id="filtros-form">
+      <div class="filter-group">
+        <div class="field">
+          <label for="q">¿Qué buscas?</label>
+          <input type="text" id="q" name="q">
+        </div>
+        <div class="field">
+          <label for="ciudad">Ciudad</label>
+          <input type="text" id="ciudad" name="ciudad">
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label class="checkbox-row"><input type="checkbox" id="presencial"> Presencial</label>
+        <label class="checkbox-row"><input type="checkbox" id="online"> Online</label>
+        <label class="checkbox-row"><input type="checkbox" id="verificados"> Solo verificados</label>
+      </div>
+
+      <div class="filter-group">
+        <label style="font-size:0.85rem; font-weight:600; color: var(--ink-soft); display:block; margin-bottom:8px;">Categoría</label>
+        <div id="categorias-filtro"></div>
+      </div>
+
+      <button type="submit" class="btn btn-outline btn-block">Aplicar filtros</button>
+    </form>
+  </aside>
+
+  <main>
+    <div class="results-header">
+      <h2>Directorio de asociados</h2>
+      <span class="results-count" id="results-count"></span>
+    </div>
+    <div class="results-grid" id="results-grid"></div>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="container">PULSO · Directorio de asociados</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/directorio.js"></script>
+</body>
+</html>

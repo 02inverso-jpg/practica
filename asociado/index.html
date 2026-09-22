@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi panel · PULSO</title>
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="logo">PULSO<span>.</span></a>
+  </div>
+</header>
+
+<div class="auth-shell">
+  <div class="auth-card" style="max-width: 460px; text-align:center;">
+    <h1>Tu panel está en camino</h1>
+    <p>Ya iniciaste sesión correctamente como asociado. El panel para editar tu perfil, servicios, horarios y ver tus estadísticas se construye en el siguiente pack (Fase 4).</p>
+    <button id="btn-salir" class="btn btn-outline btn-block">Cerrar sesión</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-client.js"></script>
+<script>
+document.getElementById('btn-salir').addEventListener('click', async () => {
+  await supabaseClient.auth.signOut();
+  window.location.href = '../login.html';
+});
+</script>
+</body>
+</html>
