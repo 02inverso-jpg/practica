@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perfil · PULSO</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">PULSO<span>.</span></a>
+    <nav class="site-nav">
+      <a href="directorio.html">Directorio</a>
+      <a href="login.html" class="btn btn-primary">Acceder</a>
+    </nav>
+  </div>
+</header>
+
+<div id="perfil-contenido">
+  <div class="profile-header">
+    <div class="container">
+      <a href="directorio.html" class="back-link">← Volver al directorio</a>
+
+      <div class="profile-top">
+        <div class="profile-photo" id="perfil-foto"></div>
+        <div>
+          <h1 id="perfil-nombre"></h1>
+          <span id="perfil-verificado" class="verified-mark hidden">✓ Asociado verificado</span>
+          <div class="category" id="perfil-categoria"></div>
+          <div class="location" id="perfil-ubicacion"></div>
+
+          <div class="profile-actions">
+            <a id="btn-whatsapp" class="btn btn-primary" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <a id="btn-website" class="btn btn-outline" target="_blank" rel="noopener">🌐 Sitio web</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="profile-section">
+    <div class="container">
+      <h2>Sobre el profesional</h2>
+      <p id="perfil-descripcion"></p>
+    </div>
+  </section>
+
+  <section class="profile-section" id="seccion-servicios">
+    <div class="container">
+      <h2>Servicios</h2>
+      <ul class="service-list" id="lista-servicios"></ul>
+    </div>
+  </section>
+
+  <section class="profile-section" id="seccion-horarios">
+    <div class="container">
+      <h2>Horarios</h2>
+      <ul class="schedule-list" id="lista-horarios"></ul>
+    </div>
+  </section>
+
+  <section class="profile-section" id="seccion-galeria">
+    <div class="container">
+      <h2>Galería</h2>
+      <div class="gallery-grid" id="grid-galeria"></div>
+    </div>
+  </section>
+</div>
+
+<footer class="site-footer">
+  <div class="container">PULSO · Directorio de asociados</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/perfil.js"></script>
+</body>
+</html>

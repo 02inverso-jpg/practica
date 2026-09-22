@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard · Admin PULSO</title>
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <a href="dashboard.html" class="logo">PULSO<span>.</span></a>
+    <nav class="admin-nav">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="asociados.html">Asociados</a>
+      <span class="disabled">Solicitudes</span>
+      <span class="disabled">Categorías</span>
+      <span class="disabled">Servicios</span>
+      <span class="disabled">Usuarios</span>
+      <span class="disabled">Configuración</span>
+    </nav>
+    <button id="admin-signout" class="signout">Cerrar sesión</button>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h1>Dashboard</h1>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-label">Asociados totales</div>
+        <div class="stat-value" id="stat-total">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Pendientes de revisión</div>
+        <div class="stat-value" id="stat-pendientes">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Leads generados</div>
+        <div class="stat-value" id="stat-leads">—</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Asociados recientes</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Nombre</th><th>Estado</th><th>Registrado</th></tr>
+        </thead>
+        <tbody id="recientes-body">
+          <tr><td colspan="3">Cargando…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="js/admin-guard.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

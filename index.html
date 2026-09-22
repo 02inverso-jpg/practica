@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PULSO · Encuentra al profesional que necesitas</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">PULSO<span>.</span></a>
+    <nav class="site-nav">
+      <a href="directorio.html">Directorio</a>
+      <a href="login.html" class="btn btn-primary">Acceder</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <h1>Encuentra al profesional de salud que necesitas</h1>
+      <p>Busca entre nuestros asociados verificados por especialidad y ciudad, revisa su perfil y contáctalos directo por WhatsApp.</p>
+
+      <form class="search-card" id="home-search" action="directorio.html" method="get">
+        <div class="search-row">
+          <div class="field">
+            <label for="home-q">¿Qué estás buscando?</label>
+            <input type="text" id="home-q" name="q" placeholder="Especialidad, servicio o profesional">
+          </div>
+          <div class="field">
+            <label for="home-ciudad">¿Dónde?</label>
+            <input type="text" id="home-ciudad" name="ciudad" placeholder="Ciudad o estado">
+          </div>
+          <div class="field" style="align-self:end;">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <svg class="pulse-line" viewBox="0 0 600 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0 80 H120 L145 80 L160 30 L180 130 L195 55 L210 80 H330 L355 80 L370 30 L390 130 L405 55 L420 80 H600"
+            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</section>
+
+<section class="categories">
+  <div class="container">
+    <h2>Categorías populares</h2>
+    <div class="category-list" id="categorias-lista">
+      <a class="category-chip" href="directorio.html?q=odontolog%C3%ADa">🦷 Odontología</a>
+      <a class="category-chip" href="directorio.html?q=psicolog%C3%ADa">🧠 Psicología</a>
+      <a class="category-chip" href="directorio.html?q=medicina">⚕️ Medicina general</a>
+      <a class="category-chip" href="directorio.html?q=fisioterapia">💪 Fisioterapia</a>
+      <a class="category-chip" href="directorio.html?q=oftalmolog%C3%ADa">👁️ Oftalmología</a>
+      <a class="category-chip" href="directorio.html?q=nutrici%C3%B3n">🥗 Nutrición</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">PULSO · Directorio de asociados</div>
+</footer>
+
+</body>
+</html>

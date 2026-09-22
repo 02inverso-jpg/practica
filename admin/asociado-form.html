@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nuevo asociado · Admin PULSO</title>
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <a href="dashboard.html" class="logo">PULSO<span>.</span></a>
+    <nav class="admin-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="asociados.html" class="active">Asociados</a>
+      <span class="disabled">Solicitudes</span>
+      <span class="disabled">Categorías</span>
+      <span class="disabled">Servicios</span>
+      <span class="disabled">Usuarios</span>
+      <span class="disabled">Configuración</span>
+    </nav>
+    <button id="admin-signout" class="signout">Cerrar sesión</button>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h1 id="form-titulo">Nuevo asociado</h1>
+      <a href="asociados.html" class="btn btn-outline">← Volver</a>
+    </div>
+
+    <div class="panel">
+      <div id="form-mensaje" class="form-message error hidden"></div>
+
+      <form id="form-asociado">
+        <h3 class="form-section-title">Información</h3>
+        <div class="admin-form-grid">
+          <div class="field"><label for="name">Nombre del profesional</label><input type="text" id="name" name="name" required></div>
+          <div class="field"><label for="business_name">Nombre comercial</label><input type="text" id="business_name" name="business_name"></div>
+          <div class="field full"><label for="description">Descripción</label><textarea id="description" name="description"></textarea></div>
+          <div class="field"><label for="phone">Teléfono</label><input type="tel" id="phone" name="phone"></div>
+          <div class="field"><label for="whatsapp">WhatsApp (con lada, solo números)</label><input type="tel" id="whatsapp" name="whatsapp" placeholder="5213121234567"></div>
+          <div class="field"><label for="email">Correo</label><input type="email" id="email" name="email"></div>
+          <div class="field"><label for="website">Sitio web</label><input type="url" id="website" name="website"></div>
+        </div>
+
+        <h3 class="form-section-title">Ubicación</h3>
+        <div class="admin-form-grid">
+          <div class="field full"><label for="address">Dirección</label><input type="text" id="address" name="address"></div>
+          <div class="field"><label for="city">Ciudad</label><input type="text" id="city" name="city"></div>
+          <div class="field"><label for="state">Estado</label><input type="text" id="state" name="state"></div>
+          <div class="field"><label for="postal_code">Código postal</label><input type="text" id="postal_code" name="postal_code"></div>
+          <div class="field">
+            <label for="modality">Modalidad</label>
+            <select id="modality" name="modality">
+              <option value="presencial">Presencial</option>
+              <option value="online">Online</option>
+              <option value="ambas">Ambas</option>
+            </select>
+          </div>
+        </div>
+
+        <h3 class="form-section-title">Especialización</h3>
+        <div class="admin-form-grid">
+          <div class="field">
+            <label for="category_id">Categoría</label>
+            <select id="category_id" name="category_id"><option value="">Selecciona una categoría</option></select>
+          </div>
+          <div class="field" style="align-self:end;">
+            <label class="checkbox-row"><input type="checkbox" id="verified" name="verified"> Asociado verificado</label>
+          </div>
+        </div>
+
+        <p style="color: var(--ink-soft); font-size: 0.85rem; margin-top: 24px;">
+          Servicios, horarios y galería de fotos se editan desde el panel del propio asociado — esa parte llega en el siguiente pack (Fase 4).
+        </p>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 16px;">Guardar asociado</button>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="js/admin-guard.js"></script>
+<script src="js/asociado-form.js"></script>
+</body>
+</html>

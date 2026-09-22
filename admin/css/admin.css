@@ -1,0 +1,164 @@
+/* =========================================================
+   PULSO — panel admin (usa los tokens de ../../css/styles.css)
+   ========================================================= */
+
+.admin-shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  background: var(--ink);
+  color: #cfe0dc;
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-sidebar .logo { color: var(--white); margin-bottom: 32px; display: block; }
+.admin-sidebar .logo span { color: var(--accent); }
+
+.admin-nav { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+
+.admin-nav a {
+  color: #cfe0dc;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 7px;
+  font-size: 0.94rem;
+  font-weight: 500;
+}
+
+.admin-nav a:hover { background: rgba(255, 255, 255, 0.06); }
+
+.admin-nav a.active { background: var(--primary); color: var(--white); }
+
+.admin-nav .disabled {
+  color: rgba(207, 224, 220, 0.4);
+  padding: 10px 12px;
+  font-size: 0.94rem;
+}
+
+.admin-sidebar .signout {
+  margin-top: 20px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #cfe0dc;
+  padding: 9px 12px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+}
+
+.admin-main { padding: 32px 40px; background: var(--bg-soft); min-height: 100vh; }
+
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.admin-topbar h1 { margin: 0; font-size: 1.5rem; }
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.stat-card .stat-label { color: var(--ink-soft); font-size: 0.88rem; margin-bottom: 6px; }
+.stat-card .stat-value { font-family: var(--font-display); font-size: 2rem; color: var(--ink); }
+
+.panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.panel h2 { font-size: 1.1rem; margin-bottom: 16px; }
+
+.data-table { width: 100%; border-collapse: collapse; }
+
+.data-table th {
+  text-align: left;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  font-weight: 600;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+  vertical-align: middle;
+}
+
+.data-table tr:last-child td { border-bottom: none; }
+
+.code { font-family: 'SFMono-Regular', Consolas, monospace; font-size: 0.82rem; color: var(--ink-soft); }
+
+.acciones { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.link-accion {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--primary);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.link-accion:hover { text-decoration: underline; }
+
+.link-danger { color: var(--danger); }
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.toolbar input[type="text"] { max-width: 320px; }
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.admin-form-grid .field.full { grid-column: 1 / -1; }
+
+.form-section-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin: 28px 0 14px;
+}
+
+.form-section-title:first-child { margin-top: 0; }
+
+@media (max-width: 900px) {
+  .admin-shell { grid-template-columns: 1fr; }
+  .admin-sidebar { display: flex; flex-direction: row; overflow-x: auto; }
+  .admin-nav { flex-direction: row; }
+  .stat-row { grid-template-columns: 1fr; }
+  .admin-form-grid { grid-template-columns: 1fr; }
+}
