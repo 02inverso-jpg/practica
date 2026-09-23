@@ -15,7 +15,7 @@
  * Supabase → Project Settings → API.
  */
 
-const SUPABASE_URL = 'https://llcejomieclkzfzzukoo.supabase.co/rest/v1/';
+const SUPABASE_URL = 'https://llcejomieclkzfzzukoo.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_WwseBVj5KtL6bvbj_D2CqA_l2rc8yJ_';
 
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
