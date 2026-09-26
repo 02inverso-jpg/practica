@@ -1,13 +1,3 @@
--- =========================================================
--- PULSO DIRECTORY — Esquema de base de datos
--- Motor: PostgreSQL (pensado para Supabase)
---
--- Cómo usarlo:
---   1. Crea un proyecto en https://supabase.com
---   2. Abre el "SQL Editor" del proyecto
---   3. Pega este archivo completo y ejecútalo (una sola vez)
--- =========================================================
-
 create extension if not exists pgcrypto;
 
 -- ---------------------------------------------------------
@@ -375,3 +365,42 @@ grant execute on function register_whatsapp_click(uuid) to anon, authenticated;
 --   2. Sube tu rol a ADMIN a mano, una sola vez, desde el SQL Editor:
 --         update profiles set role = 'ADMIN' where email = 'tu-correo@ejemplo.com';
 -- =========================================================
+
+
+
+-- Actualizaciones de tablas y categorías
+ALTER TABLE asociados 
+ADD COLUMN IF NOT EXISTS horario_atencion JSONB DEFAULT '{"lunes_viernes": "09:00 - 18:00", "sabado": "09:00 - 14:00", "domingo": "Cerrado"}'::jsonb;
+
+CREATE TABLE IF NOT EXISTS asociado_galeria (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    asociado_id UUID REFERENCES asociados(id) ON DELETE CASCADE,
+    imagen_url TEXT NOT NULL,
+    titulo VARCHAR(150),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS resenas (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    asociado_id UUID REFERENCES asociados(id) ON DELETE CASCADE,
+    nombre_cliente VARCHAR(100) NOT NULL,
+    comentario TEXT NOT NULL,
+    calificacion INT CHECK (calificacion BETWEEN 1 AND 5),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS asociado_estadisticas (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    asociado_id UUID REFERENCES asociados(id) ON DELETE CASCADE,
+    visitas INT DEFAULT 0,
+    contactos_whatsapp INT DEFAULT 0,
+    fecha DATE DEFAULT CURRENT_DATE,
+    CONSTRAINT unique_asociado_fecha UNIQUE (asociado_id, fecha)
+);
+
+INSERT INTO categorias (nombre, slug, icono) VALUES
+('Paneles Solares', 'paneles-solares', 'sol'),
+('Decorador de Interiores', 'decorador-interiores', 'pincel'),
+('Instaladores de Piso', 'instaladores-piso', 'capas'),
+('Herrería', 'herreria', 'herramienta')
+ON CONFLICT (slug) DO NOTHING;
