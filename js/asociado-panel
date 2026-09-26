@@ -1,0 +1,77 @@
+import { supabase } from './supabase-client.js';
+
+let usuarioActual = null;
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    // Si no se detecta sesión activa se puede redirigir o usar ID temporal
+    console.log("Modo demostración o no autenticado");
+  }
+  usuarioActual = user;
+  if (usuarioActual) {
+    cargarEstadisticas();
+    cargarGaleria();
+  }
+});
+
+async function cargarEstadisticas() {
+  if (!usuarioActual) return;
+  const { data: stats } = await supabase
+    .from('asociado_estadisticas')
+    .select('visitas')
+    .eq('asociado_id', usuarioActual.id);
+
+  const total = stats ? stats.reduce((acc, curr) => acc + curr.visitas, 0) : 0;
+  document.getElementById('totalVisitas').innerText = total;
+}
+
+async function cargarGaleria() {
+  if (!usuarioActual) return;
+  const { data: fotos } = await supabase
+    .from('asociado_galeria')
+    .select('*')
+    .eq('asociado_id', usuarioActual.id);
+
+  const container = document.getElementById('galeriaAsociadoAdmin');
+  if (!container) return;
+  container.innerHTML = '';
+
+  fotos?.forEach(f => {
+    container.innerHTML += `
+      <div class="col-md-3">
+        <div class="card h-100">
+          <img src="${f.imagen_url}" class="card-img-top" style="height: 120px; object-fit: cover;">
+          <div class="card-body p-2 text-center">
+            <small class="d-block text-truncate">${f.titulo || 'Sin título'}</small>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+document.getElementById('formSubirImagen')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const url = document.getElementById('inputUrlImagen').value;
+  const titulo = document.getElementById('inputTituloImagen').value;
+
+  if (!usuarioActual) {
+    alert('Inicia sesión para guardar fotos.');
+    return;
+  }
+
+  const { error } = await supabase.from('asociado_galeria').insert([{
+    asociado_id: usuarioActual.id,
+    imagen_url: url,
+    titulo: titulo
+  }]);
+
+  if (!error) {
+    alert('Imagen agregada exitosamente.');
+    document.getElementById('formSubirImagen').reset();
+    cargarGaleria();
+  } else {
+    alert('Error al agregar imagen: ' + error.message);
+  }
+});
